@@ -1,1 +1,50 @@
+public class InsertionSort extends Sort{
+    public InsertionSort(int max) {
+        this.a = new int[max];
+        this.elem = 0;
+    }
 
+    void sort() {
+        for (int left = 0; left < elem; left++){
+
+            int value = a[left];
+            int i = left - 1;
+                for (; i>=0;i--){
+                    if ( value < a[i]){
+                        a[ i + 1 ] = a[ i ];
+                    }else {
+                        break;
+                    }
+                }
+            a[ i + 1] = value;
+        }
+    }
+}
+
+public abstract class Sort {
+    public int[] a;
+    public int elem = 0;
+
+    void add(int numb){
+        a[elem]=numb;
+        elem++;
+    };
+    void fill(int max){
+        for (int i=0;i<max;i++){
+            a[i] = ((int)(Math.random()*100));
+        }
+    }
+    void sub(int numb){
+    for (int i = numb; i < elem - 1; i++){
+        a[i] = a[i + 1];
+    }
+    elem--;
+    };
+
+    public void print(){
+        for (int i=0;i<elem;i++){
+            System.out.print(a[i] + " ");
+        }
+        System.out.println();
+    }
+}
